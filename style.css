@@ -1,0 +1,203 @@
+
+body {
+    font-family: "Source Code Pro";
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 180px;
+    gap: 20px;
+
+}
+
+
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-group {
+    flex: 1;
+    position: relative;
+    height: 70px;
+}
+
+.input-wrapper label {
+    position: absolute;
+    top: -13px;
+    left: 15px;
+    font-size: 22px;
+    background-color: white;
+    padding: 0 8px;
+    z-index: 1;
+
+}
+
+input {
+    width: 240px;
+    min-width: 0;
+    height: 70px;
+    font: 400 24px "Source Code Pro";
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font: 400 20px "Source Code Pro";
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+
+
+}
+
+
+
+.swap-arrow {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+
+}
+
+.swap-arrow.clicked {
+
+    transform: rotate(-180deg);
+}
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        min-height: 100vh;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .container {
+        padding: 30px 20px;
+        padding-bottom: 60px;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .input-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        align-items: center;  /* Center the whole thing */
+    }
+
+    .input-wrapper {
+        position: relative;  
+        width: auto;  
+    }
+
+    .input-wrapper label {
+        top: -13px;
+        left: 15px;
+        font-size: 20px;
+    }
+
+    .input-group {
+        width: auto;  
+    }
+
+    input {
+        width: 200px;  
+        padding-right: 110px;
+    }
+    
+    select {
+        right: 15px;
+    }
+    
+    .swap-arrow {
+        transform: rotate(90deg);
+        width: 40px;
+        height: 40px;
+    }
+    
+    .swap-arrow.clicked {
+        transform: rotate(-90deg);
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        padding-bottom: 60px;
+        width: 100%;
+    }
+
+    input {
+        width: 200px;
+        font-size: 20px;
+        height: 60px;
+    }
+    
+    select {
+        font-size: 16px;
+        right: 10px;
+    }
+}
