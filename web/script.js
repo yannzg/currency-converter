@@ -1,3 +1,6 @@
+import { convertCurrency } from "../common.js";
+
+
 // Registering service worker 
 
 if ('serviceWorker' in navigator) {
@@ -11,7 +14,6 @@ if ('serviceWorker' in navigator) {
 }
 
 
-const apiURL = 'https://api.frankfurter.app/latest';
 const swapArrow = document.querySelector(".swap-arrow");
 let rotation = 0;
 
@@ -52,57 +54,31 @@ const currencies = {
 
 // Conversion functions
 
-function convertFromTo() {
-    const amount = input.value;
-    const from = fromCurrency.value;
-    const to = toCurrency.value;
+async function convertFromTo() {
+    try {
+        const result = await convertCurrency(
+            input.value,
+            fromCurrency.value,
+            toCurrency.value
+        );
+        output.value = result.toFixed(2);
 
-    // Handle same currency conversion
-    if (from == to) {
-        output.value = amount;
-        return;
+    } catch (err) {
+        console.error(err);
     }
-
-    const url = `${apiURL}?from=${from}&to=${to}`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const rate = data.rates[to];
-            const result = amount * rate;
-
-            output.value = result.toFixed(2);
-        })
-        .catch(error => {
-            console.error("Error: ", error);
-        });
 }
 
-function convertToFrom() {
-    const amount = output.value;
-    const from = toCurrency.value;
-    const to = fromCurrency.value;
-
-    // Handle same currency conversion
-    if (from == to) {
-        input.value = amount;
-        return;
+async function convertToFrom() {
+    try {
+        const result = await convertCurrency(
+            output.value,
+            toCurrency.value,
+            fromCurrency.value
+        );
+        input.value = result.toFixed(2);
+    } catch (err) {
+        console.log(err);
     }
-
-
-    const url = `${apiURL}?from=${from}&to=${to}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const rate = data.rates[to];
-            const result = amount * rate;
-            
-            input.value = result.toFixed(2);
-        })
-        .catch(error => {
-            console.error("Error: ", error);
-        });
 }
 
 // Saving latest conversion on browser
@@ -166,7 +142,6 @@ swapArrow.addEventListener("click", () => {
 
     }
 })
-
 
 
 // Function to block the use of letter 'e'
