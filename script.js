@@ -1,3 +1,16 @@
+// Registering service worker 
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => {
+            console.log('✅ Service Worker registered:', reg.scope);
+        })
+        .catch(error => {
+            console.error('❌ Service Worker registration failed:', error);
+        });
+}
+
+
 const apiURL = 'https://api.frankfurter.app/latest';
 const swapArrow = document.querySelector(".swap-arrow");
 let rotation = 0;
@@ -156,7 +169,6 @@ swapArrow.addEventListener("click", () => {
 
 
 
-
 // Function to block the use of letter 'e'
 
 function blockE(e) {
@@ -166,6 +178,7 @@ function blockE(e) {
 };
 
 input.addEventListener("keydown", blockE);
+output.addEventListener("keydown", blockE);
 
 
 convertFromTo()
