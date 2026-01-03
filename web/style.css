@@ -128,7 +128,7 @@ select {
     }
 
     h1 {
-        font-size: 32px;
+        font-size: 30px;
         text-align: center;
     }
 
@@ -163,7 +163,8 @@ select {
 
     input {
         width: 100%;  
-        padding-right: 110px;
+        padding-right: 110px;       
+
     }
     
     select {
@@ -177,7 +178,7 @@ select {
     }
     
     .swap-arrow.clicked {
-        transform: rotate(-90deg);
+        transform: rotate(-90degit g);
     }
 }
 
@@ -198,6 +199,5 @@ select {
     
     select {
         font-size: 16px;
-        right: 10px;
     }
 }
