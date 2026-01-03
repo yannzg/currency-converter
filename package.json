@@ -7,7 +7,8 @@
   },
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp common.js web/common.js"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { convertCurrency } from "../common.js";
+import { convertCurrency } from "./common.js";
 
 
 // Registering service worker 
