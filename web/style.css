@@ -197,7 +197,12 @@ select {
         height: 60px;
     }
     
+    h1 {
+        padding-bottom: 22px;
+    }
+
     select {
         font-size: 16px;
+        right: 20px;
     }
 }
